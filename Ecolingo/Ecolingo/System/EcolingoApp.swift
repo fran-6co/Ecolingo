@@ -11,7 +11,7 @@ import SwiftUI
 struct EcolingoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
