@@ -19,7 +19,7 @@ struct MainView: View {
             Tab("Sign in🔑", systemImage: "person.crop.circle.fill") {
                 Text("USER LOG IN")
             }
-            Tab("Settings🔧", systemImage: "gear") {
+            Tab("Profile🔧", systemImage: "gear") {
                 Text("SETTINGS")
                 Text("LOG IN")
             }
@@ -35,31 +35,27 @@ struct ExtractedView: View {
     var body: some View {
         NavigationStack {
             List {
-                Text("Here we can put text")
-                Text("like this")
-                HStack {
-                    Image("logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 200)
-                    Spacer()
-                    Text("big pictures")
-                    Spacer()
-                }
-                .padding()
-                HStack {
-                    Image("logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 25)
-                    Spacer()
-                    Text("small pictures")
-                    Spacer()
-                }
-                .padding()
+                Text("LIST OF TOPICS")
+                Text("TO DECIDE IN")
+                Text("NEW ISSUE")
+                
             }
-            .navigationTitle("Learning Path...")
+            .navigationTitle("Topics")
         }
+//        Button {
+//            QuizExample(question: "Do you know about plants?", answer1: "yes", answer2: "no", answer3: "just a bit")
+//        } label: {
+//            Text("click here to enter the quiz")
+//        }
+
+//        NavigationStack {
+//            List {
+//                Text("LIST OF TOPICS")
+//                Text("TO DECIDE IN")
+//                Text("NEW ISSUE")
+//            }
+//            .navigationTitle("Topics")
+//        }
 //        .padding()
     }
 }
