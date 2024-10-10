@@ -14,13 +14,14 @@ struct MainView: View {
                 ExtractedView()
             }
             Tab("Tracking🪴", systemImage: "tray.and.arrow.up.fill") {
-                Text("Main view")
+                Text("Here will appear lessons")
             }
             Tab("Sign in🔑", systemImage: "person.crop.circle.fill") {
-                Text("Main view")
+                Text("USER LOG IN")
             }
             Tab("Settings🔧", systemImage: "gear") {
-                Text("Main view")
+                Text("SETTINGS")
+                Text("LOG IN")
             }
         }
     }
