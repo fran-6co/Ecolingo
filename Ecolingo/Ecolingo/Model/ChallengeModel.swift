@@ -1,0 +1,8 @@
+//
+//  ChallengeModel.swift
+//  Ecolingo
+//
+//  Created by Fran Ochoa on 23/10/24.
+//
+
+import Foundation
