@@ -10,6 +10,10 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
+            Tab("GAME PROTOTYPE", systemImage: "tray.and.arrow.down.fill") {
+                GameView()
+                //GamePrototypeView()
+            }
             Tab("🏡  Home", systemImage: "tray.and.arrow.down.fill") {
                 HomeView()
             }
@@ -30,5 +34,6 @@ struct MainView: View {
 #Preview {
     MainView()
 }
+
 
 
