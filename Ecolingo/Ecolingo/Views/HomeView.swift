@@ -37,7 +37,8 @@ struct HomeView: View {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(0..<8) { _ in
-                                    ChallengeCardView(challenge: .preview)
+                                    ChallengeCardView(challenge: Challenge(name: "Challenge title example", type: .experience, topic: .sustainableFashion, description: "This is a text with the purpose to show the description of the challenge. Here can be explained with long text what the challenge should be and many other things. This is a long text to show also long text format.", userPoints: 25))
+//                                    ChallengeCardView(challenge: .preview)
                                         .padding()
                                 }
                             }
