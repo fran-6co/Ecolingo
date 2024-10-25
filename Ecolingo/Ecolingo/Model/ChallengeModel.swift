@@ -12,6 +12,8 @@ struct Challenge {
     let name: String
     let type: ChallengeType
     let topic: ChallengeTopic
+    let description: String
+    let userPoints: Int
 }
 
 enum ChallengeType: String, CaseIterable, Identifiable {
