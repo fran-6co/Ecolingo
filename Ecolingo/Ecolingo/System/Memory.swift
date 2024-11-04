@@ -5,69 +5,6 @@
 //  Created by Keerthi Siva on 29/10/24.
 //
 
-/*import Foundation
-import SwiftUI
-
-class Card: Identifiable, ObservableObject{
-    var id = UUID()
-    @Published var isFaceUp = false
-    @Published var isMatched = false
-    //var text: String
-    var imageName: String
-    
-    
-    /*init(text: String){
-        self.text = text
-    }*/
-    
-    init(imageName: String){
-        self.imageName = imageName
-    }
-    
-    func turnOver(){
-        self.isFaceUp.toggle()
-    }
-    
-}
-
-let cardImageNames:[String] = [
-    "image 1", "image 2", "image 3", "image 4" ,"image 5" ,"image 6","image 7", "image 8"
-]
-
-
-func createCardList() -> [Card] {
-    var cardList = [Card]()
-    
-    for imageName in cardImageNames {
-        cardList.append(Card(imageName: imageName))
-        cardList.append(Card(imageName: imageName))
-    }
-    
-    return cardList
-}
-
-let faceDownCard = Card(imageName: "?")
-
-//For letters on the boxed
-let cardValues: [String] = [
-    "A", "B", "C", "D", "E", "F", "G","H"
-]
-
-func createCardList() -> [Card] {
-    
-    var cardList = [Card]()
-    
-    for cardValue in cardValues {
-        cardList.append(Card(text:cardValue))
-        cardList.append(Card(text:cardValue))
-    }
-    
-    return cardList
-}
-
-let faceDownCard = Card(text: "?")*/
-
-
 import Foundation
 import SwiftUI
 
@@ -76,9 +13,13 @@ class Card: Identifiable, ObservableObject {
     @Published var isFaceUp = false
     @Published var isMatched = false
     var imageName: String
+    var animalName: String
+    var isImageCard: Bool  // New property to determine if this card shows the image or the name
 
-    init(imageName: String) {
+    init(imageName: String, animalName: String, isImageCard: Bool) {
         self.imageName = imageName
+        self.animalName = animalName
+        self.isImageCard = isImageCard
     }
     
     func turnOver() {
@@ -86,15 +27,24 @@ class Card: Identifiable, ObservableObject {
     }
 }
 
-let cardImageNames: [String] = [
-    "image 1", "image 2", "image 3", "image 4", "image 5", "image 6", "image 7", "image 8"
+let cardPairs: [(imageName: String, animalName: String)] = [
+    ("hornbill", "Hornbill"),
+    ("otter", "Otter"),
+    ("monitor_lizard", "Monitor lizard"),
+    ("uwu koel", "Uwu koel"),
+    ("macaque", "Macaque"),
+    ("panda", "Panda"),
+    ("wild boar", "Wild boar"),
+    ("pangolin", "Pangolin")
 ]
+
 
 func createCardList() -> [Card] {
     var cardList = [Card]()
-    for imageName in cardImageNames {
-        cardList.append(Card(imageName: imageName))
-        cardList.append(Card(imageName: imageName))
+    for pair in cardPairs {
+        // Add one card with the image and one with the name
+        cardList.append(Card(imageName: pair.imageName, animalName: pair.animalName, isImageCard: true))
+        cardList.append(Card(imageName: pair.imageName, animalName: pair.animalName, isImageCard: false))
     }
-    return cardList
+    return cardList.shuffled()
 }

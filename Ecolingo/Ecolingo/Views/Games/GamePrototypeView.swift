@@ -4,6 +4,7 @@
 //
 //  Created by Fran Ochoa on 24/10/24.
 //
+
 import SwiftUI
 
 struct GamePrototypeView: View {
@@ -14,14 +15,24 @@ struct GamePrototypeView: View {
     
     var body: some View {
         if card.isFaceUp || MatchedCards.contains(where: { $0.id == card.id }) {
-            Image(card.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: CGFloat(width), height: CGFloat(width))
-                .background(Color(red: 0.68, green: 0.83, blue: 0.96))
-                .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color(red: 0.18, green: 0.32, blue: 0.46), lineWidth: 5))
+            if card.isImageCard {
+                Image(card.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: CGFloat(width), height: CGFloat(width))
+                    .background(Color(red: 0.68, green: 0.83, blue: 0.96))
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color(red: 0.18, green: 0.32, blue: 0.46), lineWidth: 5))
+            } else {
+                Text(card.animalName)
+                    .font(.system(size: 30))
+                    .frame(width: CGFloat(width), height: CGFloat(width))
+                    .background(Color(red: 0.68, green: 0.83, blue: 0.96))
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color(red: 0.18, green: 0.32, blue: 0.46), lineWidth: 5))
+            }
         } else {
             Text("?")
                 .font(.system(size: 50))
@@ -50,11 +61,11 @@ struct GamePrototypeView: View {
     }
     
     func checkMatch() {
-        if UserChoices[0].imageName == UserChoices[1].imageName {
+        // Check if the two selected cards have matching animal names
+        if UserChoices[0].animalName == UserChoices[1].animalName && UserChoices[0].isImageCard != UserChoices[1].isImageCard {
             MatchedCards.append(UserChoices[0])
             MatchedCards.append(UserChoices[1])
         }
         UserChoices.removeAll()
     }
 }
-

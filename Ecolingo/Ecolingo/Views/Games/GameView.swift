@@ -4,6 +4,7 @@
 //
 //  Created by Keerthi Siva on 29/10/24.
 //
+
 import SwiftUI
 
 struct GameView: View {
@@ -12,7 +13,7 @@ struct GameView: View {
         GridItem(.flexible()), GridItem(.flexible())
     ]
     
-    @State var cards = createCardList().shuffled()
+    @State var cards = createCardList()
     @State var MatchedCards = [Card]()
     @State var UserChoices = [Card]()
     
@@ -36,12 +37,10 @@ struct GameView: View {
                         .font(.headline)
                     
                     LazyVGrid(columns: fourColumnGrid, spacing: 5) {
-                        ForEach(cardImageNames, id: \.self) { imageName in
-                            if !MatchedCards.contains(where: { $0.imageName == imageName }) {
-                                Image(imageName)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 40, height: 40)
+                        ForEach(cardPairs.map { $0.animalName }, id: \.self) { animalName in
+                            if !MatchedCards.contains(where: { $0.animalName == animalName }) {
+                                Text(animalName)
+                                    .font(.system(size: 30))
                             }
                         }
                     }
