@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         TabView {
             Tab("GAME PROTOTYPE", systemImage: "tray.and.arrow.down.fill") {
-                GameView()
+                RecycleGameView()
             }
             Tab("🏡  Home", systemImage: "tray.and.arrow.down.fill") {
                 HomeView()

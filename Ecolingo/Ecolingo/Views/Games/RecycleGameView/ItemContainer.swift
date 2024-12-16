@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct ItemContainer : View{
+    let item : RecycleItems
+    @ObservedObject var viewModel: RecycleViewModel
+    private let size: CGFloat = 100
+    
     var body: some View{
         Circle()
-            .fill(.blue)
+            .fill(item.color)
             .frame(width: 100, height: 100)
             .overlay{
-                GeometryReader{
+                GeometryReader{ proxy -> Color in
+                    viewModel.update(frame: proxy.frame(in: .global), for: item.id)
                     
+                    return Color.clear
                 }
             }
     }
@@ -22,6 +28,9 @@ struct ItemContainer : View{
 
 struct ItemContainer_Previews: PreviewProvider{
     static var previews: some View{
-        ItemContainer()
+        ItemContainer(
+            item: RecycleItems.all.first!,
+            viewModel: RecycleViewModel()
+        )
     }
 }

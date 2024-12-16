@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecycleGameView: View {
+    @StateObject private var viewModel = RecycleViewModel()
     let currentItem = RecycleItems(id: 1, color: .red)
     @State var position = CGPoint(x: 100, y: 100)
     
@@ -31,11 +32,12 @@ struct RecycleGameView: View {
     
     var body: some View {
         ZStack { // Use ZStack to overlay views
-            LazyHGrid(rows: gridItems, spacing: 10) {
-                ForEach(0..<5, id: \.self) { _ in
-                    Circle()
-                        .fill(.blue)
-                        .frame(width: 100, height: 100)
+            LazyVGrid(columns: gridItems, spacing: 100) {
+                ForEach(viewModel.itemContainers, id: \.id) { item in
+                    ItemContainer(
+                        item: item,
+                        viewModel: viewModel
+                    )
                 }
             }
             .padding() // Add padding to make grid more visible
