@@ -31,6 +31,11 @@ class RecycleViewModel: ObservableObject{
     
     func update(dragPosition: CGPoint){
         currentposition = dragPosition
+        if frames[1]!.contains(dragPosition){
+            print("You are touching the red item")
+        }else{
+            print("boooo")
+        }
     }
     
     func confirmDrop(){
