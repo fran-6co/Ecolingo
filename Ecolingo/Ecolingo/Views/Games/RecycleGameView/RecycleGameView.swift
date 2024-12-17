@@ -9,8 +9,6 @@ import SwiftUI
 
 struct RecycleGameView: View {
     @StateObject private var viewModel = RecycleViewModel()
-    let currentItem = RecycleItems(id: 1, color: .red)
-    @State var position = CGPoint(x: 100, y: 100)
     
     let gridItems = [
         GridItem(.flexible(), spacing: 10),
@@ -23,10 +21,11 @@ struct RecycleGameView: View {
     var drag: some Gesture {
         DragGesture()
             .onChanged{state in
-                position = state.location
+                viewModel.update(dragPosition: state.location)
             }
             .onEnded{state in
-                position = CGPoint(x: 100, y:100)
+                viewModel.update(dragPosition: state.location)
+                viewModel.confirmDrop()
             }
     }
     
@@ -43,8 +42,8 @@ struct RecycleGameView: View {
             .padding() // Add padding to make grid more visible
             
             DraggableItem(
-                item: currentItem,
-                position: position,
+                item: viewModel.currentItem,
+                position: viewModel.currentposition,
                 gesture: drag
             )
         }

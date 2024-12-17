@@ -8,7 +8,15 @@
 import SwiftUI
 
 class RecycleViewModel: ObservableObject{
+    //MARK: Gesture Properties
+    let currentItem = RecycleItems(id: 1, color: .red)
+    @Published var currentposition = initialPosition
+    
     //MARK: -Coordinates
+    private static let initialPosition = CGPoint(
+        x: UIScreen.main.bounds.midX,
+        y: UIScreen.main.bounds.height - 150
+    )
     private var frames: [Int: CGRect] = [:]
     
     
@@ -19,5 +27,17 @@ class RecycleViewModel: ObservableObject{
     //MARK: -Update in the screen
     func update(frame:CGRect, for id: Int){
         frames[id] = frame
+    }
+    
+    func update(dragPosition: CGPoint){
+        currentposition = dragPosition
+    }
+    
+    func confirmDrop(){
+        resetPosition()
+    }
+    
+    func resetPosition(){
+        currentposition = RecycleViewModel.initialPosition
     }
 }
