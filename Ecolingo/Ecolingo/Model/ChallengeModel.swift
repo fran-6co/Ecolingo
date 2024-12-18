@@ -5,13 +5,16 @@
 //  Created by Fran Ochoa on 23/10/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct Challenge {
     let id = UUID()
     let name: String
     let type: ChallengeType
     let topic: ChallengeTopic
+    let image: Image?
+    let description: String
+    let userPoints: Int
 }
 
 enum ChallengeType: String, CaseIterable, Identifiable {
